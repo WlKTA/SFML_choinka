@@ -98,8 +98,8 @@ int main()
        gwiazdka1.setPosition(280, 40);
        window.draw(gwiazdka1);
 
-       gwiazdka2.setPosition(280, 40);
-       gwiazdka2.rotate(180.f);
+       gwiazdka2.setPosition(340,98);
+       gwiazdka2.setRotation(180.f);
        window.draw(gwiazdka2);
 
        
