@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <iomanip>
-#include <windows.h>
+#include <Windows.h>
 
 int main()
 {
@@ -12,7 +12,12 @@ int main()
     int width = 600;
     int height = 800;
 
-    sf::RenderWindow window(sf::VideoMode(width, height), "My window");
+    sf::ContextSettings settings;
+    settings.antialiasingLevel = 8;
+
+   // sf::RenderWindow window(sf::VideoMode(800, 600), "SFML shapes", sf::Style::Default, settings);
+
+    sf::RenderWindow window(sf::VideoMode(width, height), "My window", sf::Style::Default, settings);
 
     sf::CircleShape triangle1(80.f, 3);
     sf::CircleShape triangle2(120.f, 3);
@@ -27,7 +32,8 @@ int main()
     sf::RectangleShape pasek22(sf::Vector2f(10, 60));
     sf::CircleShape gwiazdka1(30.f, 3);
     sf::CircleShape gwiazdka2(30.f, 3);
-    sf::CircleShape light1(10);
+    //sf::CircleShape light1(10);
+    sf::CircleShape lancuch(5);
 
     // set the shape color to green
     triangle1.setFillColor(sf::Color(29, 184, 24));
@@ -42,7 +48,8 @@ int main()
     pasek22.setFillColor(sf::Color(0, 153, 255));
     gwiazdka1.setFillColor(sf::Color(255, 255, 0));
     gwiazdka2.setFillColor(sf::Color(255, 255, 0));
-
+    //light1.setFillColor(sf::Color(255, 255, 0, 200));
+    lancuch.setFillColor(sf::Color(255, 242, 130));
    
  // run the program as long as the window is open
     while (window.isOpen())
@@ -104,6 +111,7 @@ int main()
        gwiazdka2.setRotation(180.f);
        window.draw(gwiazdka2);
 
+
        
        //baubles
        circle.setPosition(250, 300);
@@ -129,6 +137,15 @@ int main()
        circle.setPosition(300, 150);
        circle.setFillColor(sf::Color(0, 51, 102));
        window.draw(circle);
+
+       // lancuch
+        
+       for (int i = 0; i < 50; i += 5)
+       {
+           lancuch.setPosition(250+2*i, 200+i);
+           window.draw(lancuch);
+       }
+       
 
 
         // end the current frame
