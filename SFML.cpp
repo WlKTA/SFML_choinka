@@ -142,13 +142,24 @@ int main()
         
        for (int i = 0; i < 50; i += 5)
        {
-           lancuch.setPosition(250+2*i, 200+i);
+           lancuch.setPosition(270+2*i, 165+i);
            window.draw(lancuch);
        }
        
+       for (int i = 0; i < 77; i += 5)
+       {
+           lancuch.setPosition(250 + 2 * i, 275 + i);
+           window.draw(lancuch);
+       }
 
+       for (int i = 0; i < 102; i += 5)
+       {
+           lancuch.setPosition(230 + 2 * i, 400 + i);
+           window.draw(lancuch);
+       }
 
-        // end the current frame
+       
+       // end the current frame
         window.display();
     }
 
