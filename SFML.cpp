@@ -27,6 +27,7 @@ int main()
     sf::RectangleShape pasek22(sf::Vector2f(10, 60));
     sf::CircleShape gwiazdka1(30.f, 3);
     sf::CircleShape gwiazdka2(30.f, 3);
+    sf::CircleShape light1(10);
 
     // set the shape color to green
     triangle1.setFillColor(sf::Color(29, 184, 24));
@@ -41,6 +42,7 @@ int main()
     pasek22.setFillColor(sf::Color(0, 153, 255));
     gwiazdka1.setFillColor(sf::Color(255, 255, 0));
     gwiazdka2.setFillColor(sf::Color(255, 255, 0));
+
    
  // run the program as long as the window is open
     while (window.isOpen())
