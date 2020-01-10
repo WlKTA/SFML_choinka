@@ -1,12 +1,10 @@
-﻿#include <string> 
-
-
-#include <SFML/Graphics.hpp>
+﻿#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <iomanip>
 #include <Windows.h>
 #include <math.h>
 #include <vector>
+#include <string> 
 
 void moveAureole(std::vector<sf::Color>& colors, std::vector<sf::CircleShape>& circles)
 {
@@ -22,7 +20,7 @@ void moveAureole(std::vector<sf::Color>& colors, std::vector<sf::CircleShape>& c
 
 void printCircles(sf::RenderWindow& window, std::vector<sf::CircleShape>& circles)
 {
-    for (int i = 0; i < 50; ++i)
+    for (int i = 0; i < circles.size(); ++i)
     {
         window.draw(circles[i]);
     }
@@ -51,13 +49,12 @@ int main()
     {
         sf::CircleShape circle(i * 2);
         circle.setOutlineThickness(2);
-        sf::Color color(255, 223, 0, fmod(i * 0.125, 255));
+        sf::Color color(255, 223, 0, i * 0.125);
         circle.setOutlineColor(color);
         circle.setPosition(sf::Vector2f(310 - i * 2, 60 - i * 2));
         circle.setFillColor(sf::Color::Transparent);
 
         colors.push_back(color);
-
         circles.push_back(circle);
     }
 
