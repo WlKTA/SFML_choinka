@@ -8,6 +8,29 @@
 #include <math.h>
 #include <vector>
 
+void moveAureole(std::vector<sf::Color>& colors, std::vector<sf::CircleShape>& circles)
+{
+    sf::Color tmpColor = colors[colors.size() - 1]; //these 3 lines put the  last color in front of first one
+    colors.pop_back();
+    colors.insert(colors.begin(), tmpColor); //wrzucenie przed peirwszy element wektora
+
+    for (int i = 0; i < circles.size(); ++i) //these code assign new colors order to list of circles
+    {
+        circles[i].setFillColor(colors[i]);
+    }
+}
+
+void printCircles(sf::RenderWindow& window, std::vector<sf::CircleShape>& circles)
+{
+    for (int i = 0; i < 50; ++i)
+    {
+        window.draw(circles[i]);
+    }
+    Sleep(10);
+}
+
+
+
 int main()
 {
     // create the window
@@ -20,6 +43,23 @@ int main()
    // sf::RenderWindow window(sf::VideoMode(800, 600), "SFML shapes", sf::Style::Default, settings);
 
     sf::RenderWindow window(sf::VideoMode(width, height), "My window", sf::Style::Default, settings);
+
+    std::vector<sf::CircleShape> circles; //vector of circles, used in printCircles method to draw particular circles
+    std::vector<sf::Color> colors; // vector of colors, used in moveAureole to imitate fading movement
+
+    for (int i = 0; i < 50; ++i) //creates complete vector of colors and circles
+    {
+        sf::CircleShape circle(i * 2);
+        circle.setOutlineThickness(2);
+        sf::Color color(255, 223, 0, fmod(i * 0.125, 255));
+        circle.setOutlineColor(color);
+        circle.setPosition(sf::Vector2f(310 - i * 2, 60 - i * 2));
+        circle.setFillColor(sf::Color::Transparent);
+
+        colors.push_back(color);
+
+        circles.push_back(circle);
+    }
 
     sf::CircleShape triangle1(80.f, 3);
     sf::CircleShape triangle2(120.f, 3);
@@ -53,6 +93,23 @@ int main()
     //light1.setFillColor(sf::Color(255, 255, 0, 200));
     lancuch.setFillColor(sf::Color(255, 242, 130));
    
+    triangle1.setPosition(230, 100);
+    triangle2.setPosition(190, 180);
+    triangle3.setPosition(150, 270);
+    rectangle1.setPosition(270, 510);
+    prezent.setPosition(325, 515);
+    pasek1.setPosition(325, 540);
+    pasek2.setPosition(365, 515);
+    prezent2.setPosition(200, 520);
+    pasek12.setPosition(200, 545);
+    pasek22.setPosition(240, 520);
+    gwiazdka1.setPosition(280, 40);
+    gwiazdka2.setPosition(340,98);
+    gwiazdka2.setRotation(180.f);
+
+
+
+
  // run the program as long as the window is open
     while (window.isOpen())
     {
@@ -70,47 +127,49 @@ int main()
 
         // draw everything here...
 
+        moveAureole(colors, circles);
+        printCircles(window, circles);
+
        //Christmas tree
-       triangle1.setPosition(230, 100);
+       
        window.draw(triangle1);
 
-       triangle2.setPosition(190, 180);; 
+      
        window.draw(triangle2);
 
-       triangle3.setPosition(150, 270);
+       
        window.draw(triangle3);
                
        //trunk
-       rectangle1.setPosition(270, 510);
+      
        window.draw(rectangle1);
                
        //red gift
-       prezent.setPosition(325, 515);
+
        window.draw(prezent);
 
-       pasek1.setPosition(325, 540);
+       
        window.draw(pasek1);
 
-       pasek2.setPosition(365, 515);
+       
        window.draw(pasek2);
 
        //yellow gift
-       prezent2.setPosition(200, 520);
+       
        window.draw(prezent2);
 
-       pasek12.setPosition(200, 545);
+       
        window.draw(pasek12);
 
-       pasek22.setPosition(240, 520);
+       
        window.draw(pasek22);
 
        //star
       
-       gwiazdka1.setPosition(280, 40);
+       
        window.draw(gwiazdka1);
 
-       gwiazdka2.setPosition(340,98);
-       gwiazdka2.setRotation(180.f);
+       
        window.draw(gwiazdka2);
 
 
