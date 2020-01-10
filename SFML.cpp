@@ -5,6 +5,8 @@
 #include <iostream>
 #include <iomanip>
 #include <Windows.h>
+#include <math.h>
+#include <vector>
 
 int main()
 {
